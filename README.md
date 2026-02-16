@@ -1,16 +1,19 @@
-<h1>JWipe - Disk Sanitization</h1>
-
- ### [YouTube Demonstration](https://youtu.be/7eJexJVCqJo)
+<h1> *** In Band SQL Injection ***</h1>
 
 <h2>Description</h2>
-Project consists of a simple PowerShell script that walks the user through "zeroing out" (wiping) any drives that are connected to the system. The utility allows you to select the target disk and choose the number of passes that are performed. The PowerShell script will configure a diskpart script file based on the user's selections and then launch Diskpart to perform the disk sanitization.
+This project demonstrates a controlled SQL Injection (SQLi) vulnerability within a self-built web application and the corresponding detection and monitoring process using a SIEM environment.
 <br />
 
 
-<h2>Languages and Utilities Used</h2>
+<h2>The objective was not exploitation, but to:</h2>
 
-- <b>PowerShell</b> 
-- <b>Diskpart</b>
+- <b>Understand how SQL Injection works at a technical level</b> 
+- <b>Observe how vulnerable applications behave</b>
+- <b>Analyze web server logs during attacks</b>
+- <b>Validate detection capability using SIEM monitoring</b>
+
+<b>The lab environment was fully isolated and built for educational purposes only.</b>
+
 
 <h2>Environments Used </h2>
 
