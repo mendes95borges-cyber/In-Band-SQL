@@ -1,16 +1,16 @@
 <h1> *** In Band SQL Injection ***</h1>
 
 <h2>Description</h2>
-This project demonstrates a controlled SQL Injection (SQLi) vulnerability within a self-built web application and the corresponding detection and monitoring process using a SIEM environment.
+This project demonstrates a controlled SQL Injection (SQLi) vulnerability within a self-built web application and the corresponding detection and monitoring process using a SIEM (Wazuh) environment.
 <br />
 
 
-<h2>The objective was not exploitation, but to:</h2>
+<h2> Objective:</h2>
 
 - <b>Understand how SQL Injection works at a technical level</b> 
 - <b>Observe how vulnerable applications behave</b>
 - <b>Analyze web server logs during attacks</b>
-- <b>Validate detection capability using SIEM monitoring</b>
+- <b>Validate detection capability using wazuh SIEM monitoring</b>
 
 <b>The lab environment was fully isolated and built for educational purposes only.</b>
 
