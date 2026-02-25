@@ -58,7 +58,10 @@ SQL Injection Detection & Monitoring Architecture
 
 ## 🧪 Phase 2 – SQL Injection Attack Simulation
 
-Testing the login page with parameter(locally): admin' OR '1'='1' --  
+The login page was tested locally by injecting the following payload into the **username** field:admin' OR '1'='1' --  
+
+
+
 <img src="https://imgur.com/Jpqw147.png" height="120%" width="25%"/>
 <img src="https://imgur.com/53V1lVd.png" height="120%" width="25%"/>
 
