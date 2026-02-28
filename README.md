@@ -79,25 +79,57 @@ This page retrieves and displays article records directly from the MySQL databas
 To illustrate this, the database table articles contains the following sample entries:
 
 Article 1: “Welcome” – This is the first article
+
 Article 2: “Cyber Defense” – Learning SQL Injection and prevention
+
 Article 3: “Security Lab” – Building a vulnerable environment safely
 <p align="center"> 
  <img src="https://imgur.com/uxejGPl.png" height="120%" width="50%"/>
 
-so in second phase we will use our kali machine to attack the vulnerable artigo web page without any firewall rule or waf to block the connetion 
-By using the kali machine put to check the vulnerability on web server 
+In this testing phase, I used a Kali Linux machine to perform SQL Injection attacks against the artigo.php page.
+This was done without any firewall rules or Web Application Firewall (WAF) in place, ensuring that the page was fully exposed and allowing me to confirm:
 
-<img src="https://imgur.com/094syV7.png" height="120%" width="50%"/>
+1- How the web server processed malicious requests
+
+2- Whether the database queries were vulnerable to manipulation
+
+3- How the application responded to crafted payloads
+
+ <p align="center"> 
+
+ <img src="https://imgur.com/MLptBmY.png" height="120%" width="50%"/>
+
+This step was essential to simulate a real-world attack scenario and validate the severity of the vulnerability before moving into detection and mitigation phases.
+
+when we inject the follwoing curl "http://10.10.10.20/artigo.php?id=-1%27%20UNION%20SELECT%201,database(),3%20--%20-"
+from kali machine we can see the we get the db name cyberlab
+then we the name of db we will inject another sql to present the info in bd like "Cyber Defense"
+
+<img src="https://imgur.com/JNBDSf4.png" height="120%" width="50%"/>
 
 before applying the waf rule
+By default the waf is not enable so we have to enable it 
 
-<img src="https://imgur.com/SgHXfcF.png" height="120%" width="70%"/>
+<img src="https://imgur.com/2epkmh4.png" height="120%" width="70%"/>
 
-adddd
+now we go to prifile and creat our first WAF profile that will be link to the firewal polyce
+
+<img src="https://imgur.com/g4gMiDb.png" height="120%" width="70%"/>
+
+now we can the effect of applying the waf to the firewall polyce
+
+<img src="https://imgur.com/oy6LAga.png" height="120%" width="70%"/>
+
+
+now can confirm the block rquest on the firewall logs
+
+<img src="https://imgur.com/gaFaoAl.png" height="120%" width="70%"/>
+
+as well on wazuh siem que confirm the block request
 
 <img src="https://imgur.com/ilZBZaN.png" height="120%" width="70%"/>
 
-wazuh alert
+ Then the wazuh  trigger the alert
 
 <img src="https://imgur.com/1npElMN.png" height="120%" width="70%"/>
 
