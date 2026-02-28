@@ -19,7 +19,7 @@ This project was designed to simulate a real-world SQL Injection vulnerability i
 <p align="center"> 
 SQL Injection Detection & Monitoring Architecture
  <br/>
-<img src="https://imgur.com/O0hn0MX.png" height="120%" width="60%"/>
+<img src="https://imgur.com/RKgpcZL.png" height="120%" width="60%"/>
 <br />
 
 ### 🖥️ Attacker Machine
@@ -58,19 +58,34 @@ SQL Injection Detection & Monitoring Architecture
 
 ## 🧪 Phase 2 – SQL Injection Attack Simulation
 
-The login page was tested locally by injecting the following payload into the **username** field:admin' OR '1'='1' --  
+To validate the SQL Injection vulnerability, the login page was tested locally using the following payload injected into the username field:  **username** field:admin' OR '1'='1' --  
+<p align="center"> 
+<img src="https://imgur.com/Jpqw147.png" height="120%" width="25%"/> <img src="https://imgur.com/53V1lVd.png" height="120%" width="25%"/>     
+ 
+ This payload bypassed authentication logic and resulted in a successful login, as shown in the screenshots below. The application loaded login.php without properly validating or sanitizing user input.
+By default, the Apache access log does not record how the application processed the submitted credentials. To capture this information, I implemented a custom authentication logging mechanism. This allowed me to record each login attempt, including the injected payload and source IP address.
+An excerpt of the authentication log is shown below:
 
+ <p align="center"> 
 
-
-<img src="https://imgur.com/Jpqw147.png" height="120%" width="25%"/>
-<img src="https://imgur.com/53V1lVd.png" height="120%" width="25%"/>
+ <img src="https://imgur.com/WadY7WY.png" height="120%" width="50%"/>
 
 ---
-Testing the article page that contain the follwing info in DB
+  
+Database Article Page Testing
 
-<img src="https://imgur.com/5b9TE0s.png" height="120%" width="50%"/>
+In the second phase of the project, I tested another vulnerable component of the web application: the article listing page (artigo.php).
+This page retrieves and displays article records directly from the MySQL database without proper input validation or query sanitization.
+To illustrate this, the database table articles contains the following sample entries:
 
-By using the kali machine put to check the vulnerability on web server
+Article 1: “Welcome” – This is the first article
+Article 2: “Cyber Defense” – Learning SQL Injection and prevention
+Article 3: “Security Lab” – Building a vulnerable environment safely
+<p align="center"> 
+ <img src="https://imgur.com/uxejGPl.png" height="120%" width="50%"/>
+
+so in second phase we will use our kali machine to attack the vulnerable artigo web page without any firewall rule or waf to block the connetion 
+By using the kali machine put to check the vulnerability on web server 
 
 <img src="https://imgur.com/094syV7.png" height="120%" width="50%"/>
 
