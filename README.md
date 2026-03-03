@@ -107,23 +107,44 @@ then we the name of db we will inject another sql to present the info in bd like
 
 <img src="https://imgur.com/JNBDSf4.png" height="120%" width="50%"/>
 
-before applying the waf rule
-By default the waf is not enable so we have to enable it 
+---------
+
+Before creating and applying a Web Application Firewall (WAF) policy, the feature must first be enabled on the FortiGate device because it is disabled by default.
+To do this, navigated to: System → Feature Visibility 
+
+Under the Additional Features panel, enabled the Web Application Firewall option.
+This action activates the WAF module and makes the Web Application Firewall section available under: Security Profiles → Web Application Firewall
+
 
 <img src="https://imgur.com/2epkmh4.png" height="120%" width="70%"/>
 
-now we go to prifile and creat our first WAF profile that will be link to the firewal polyce
+---------
+
+After enabling the WAF feature, the next step was to create a custom Web Application Firewall profile that would later be applied to the FortiGate firewall policy protecting the vulnerable web server.
+
+ Navigated to: Security Profiles → Web Application Firewall
+
+From here, I created a new WAF profile named “sql injection”.
+This profile includes signature‑based protections tailored to block malicious input targeting the artigo.php endpoint, ensuring that malicious requests are filtered at the firewall level.
 
 <img src="https://imgur.com/g4gMiDb.png" height="120%" width="70%"/>
 
-now we can the effect of applying the waf to the firewall polyce
+ This profile would later be attached to the firewall policy protecting the vulnerable web application, forming a critical layer of defense against injection‑based attacks.
+
+ ---------
+ 
+After creating the custom “sql injection” Web Application Firewall profile, I applied it to the firewall policy, securing the target web server. This enables deep inspection of HTTP requests and blocks SQL Injection payloads before they reach the backend application. By attaching the WAF profile to the firewall rule, FortiGate actively filters, analyzes, and enforces security controls on all incoming traffic.
 
 <img src="https://imgur.com/oy6LAga.png" height="120%" width="70%"/>
 
+---------
 
-now can confirm the block rquest on the firewall logs
+To validate the effectiveness of the WAF configuration, I executed the same SQL Injection payload previously used to extract database information. FortiGate detected the malicious request using the “sql injection” Web Application Firewall profile and logged a high‑severity waf‑signature event. The log entry shows that the SQL Injection attempt was successfully blocked, demonstrating that the firewall now provides effective protection against injection‑based attacks.
+
 
 <img src="https://imgur.com/gaFaoAl.png" height="120%" width="70%"/>
+
+---------
 
 as well on wazuh siem que confirm the block request
 
