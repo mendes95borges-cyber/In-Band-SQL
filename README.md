@@ -129,7 +129,7 @@ This profile includes signature‑based protections tailored to block malicious 
 
 <img src="https://imgur.com/g4gMiDb.png" height="120%" width="70%"/>
 
- This profile would later be attached to the firewall policy protecting the vulnerable web application, forming a critical layer of defense against injection‑based attacks.
+ This profile will later be attached to the firewall policy protecting the vulnerable web application, forming a critical layer of defense against injection‑based attacks.
 
  ---------
  
@@ -146,18 +146,25 @@ To validate the effectiveness of the WAF configuration, I executed the same SQL 
 
 ---------
 
-as well on wazuh siem que confirm the block request
+The blocked SQL Injection attempts logged by FortiGate were successfully forwarded to Wazuh SIEM. Wazuh parsed the events, identified the malicious payloads, and mapped them to the MITRE ATT&CK Initial Access tactic. It then triggered alerts based on the detection rules. This integration validates that both FortiGate and Wazuh are working together to provide real‑time monitoring, visibility, and alerting for web‑based attacks.
+
+Wazuh Logs
 
 <img src="https://imgur.com/ilZBZaN.png" height="120%" width="70%"/>
 
- Then the wazuh  trigger the alert
+  Wazuh Alert
 
 <img src="https://imgur.com/1npElMN.png" height="120%" width="70%"/>
+
+---------
+
 
 Observed behavior:
 - Application returned database name
 - Confirmed lack of input validation
 - Verified SQL Injection vulnerability
+
+---
 
 ## 🔍 Key Learning Outcomes
 
@@ -168,6 +175,7 @@ Observed behavior:
 - Defensive monitoring workflow
 - Attack-to-detection lifecycle visibility
 
+---
 
 ## 🚀 Skills Demonstrated
 
@@ -189,62 +197,9 @@ Observed behavior:
 - Create automated alert playbook
 - Expand log correlation rules
 
+---
+
 ## ⚠️ Disclaimer
 
 This project was conducted in a controlled lab environment for educational purposes only. No real systems were targeted.
 
-<h2>Phase 1 </h2>
-A vulnerable PHP application was used
- <br/>
-<img src="https://imgur.com/21BjABE.png" height="120%" width="60%"/>
-<br />
-<h2>Phase 2 </h2>
-<h2>Phase 3 </h2>
-<h2>Phase 4 </h2>
-<h2>Phase 5 </h2>
-<h2>Phase 6 </h2>
-<h2>Phase 7 </h2>
-<h2>Phase 8 </h2>
-
-- <b>Windows 10</b> (21H2)
-
-<h2>Program walk-through:</h2>
-
-<p align="center"> 
-TESTE: <br/>
-<img src="https://imgur.com/M2tc7e5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Select the disk:  <br/>
-<img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Enter the number of passes: <br/>
-<img src="https://i.imgur.com/nCIbXbg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Confirm your selection:  <br/>
-<img src="https://i.imgur.com/cdFHBiU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Wait for process to complete (may take some time):  <br/>
-<img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Sanitization complete:  <br/>
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-
-<!--
- ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
---!>
