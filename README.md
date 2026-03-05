@@ -56,25 +56,26 @@ SQL Injection Detection & Monitoring Architecture
 
 ---
 
-## 🧪 Phase 2 – SQL Injection Attack Simulation
+## 🧪 Phase 2 – SQL Injection Attack Test
 
-To validate the SQL Injection vulnerability, the login page was tested locally using the following payload injected into the username field:  **username** field:admin' OR '1'='1' --  
+### Test 1
+To validate the SQL Injection vulnerability, the login page was tested locally using the following payload injected into the username field: **username** **admin'** OR **'1'='1' --**
 <p align="center"> 
 <img src="https://imgur.com/Jpqw147.png" height="120%" width="25%"/> <img src="https://imgur.com/53V1lVd.png" height="120%" width="25%"/>     
  
- This payload bypassed authentication logic and resulted in a successful login, as shown in the screenshots below. The application loaded login.php without properly validating or sanitizing user input.
+ This payload bypassed authentication logic and resulted in a successful login, as shown in the screenshots. The application loaded **login.php** page without properly validating or sanitizing user input.
 By default, the Apache access log does not record how the application processed the submitted credentials. To capture this information, I implemented a custom authentication logging mechanism. This allowed me to record each login attempt, including the injected payload and source IP address.
-An excerpt of the authentication log is shown below:
 
  <p align="center"> 
 
  <img src="https://imgur.com/WadY7WY.png" height="120%" width="50%"/>
 
 ---
-  
-Database Article Page Testing
 
-In the second phase of the project, I tested another vulnerable component of the web application: the article listing page (artigo.php).
+### Test 2
+
+In the second phase of the project, I tested another vulnerable component of the web application: the article listing page **(artigo.php).**
+
 This page retrieves and displays article records directly from the MySQL database without proper input validation or query sanitization.
 To illustrate this, the database table articles contains the following sample entries:
 
@@ -86,7 +87,7 @@ Article 3: “Security Lab” – Building a vulnerable environment safely
 <p align="center"> 
  <img src="https://imgur.com/uxejGPl.png" height="120%" width="50%"/>
 
-In this testing phase, I used a Kali Linux machine to perform SQL Injection attacks against the artigo.php page.
+In this testing phase, I used a Kali Linux machine to perform SQL Injection attacks against the **artigo.php** page.
 This was done without any firewall rules or Web Application Firewall (WAF) in place, ensuring that the page was fully exposed and allowing me to confirm:
 
 1- How the web server processed malicious requests
@@ -101,9 +102,10 @@ This was done without any firewall rules or Web Application Firewall (WAF) in pl
 
 This step was essential to simulate a real-world attack scenario and validate the severity of the vulnerability before moving into detection and mitigation phases.
 
-when we inject the follwoing curl "http://10.10.10.20/artigo.php?id=-1%27%20UNION%20SELECT%201,database(),3%20--%20-"
-from kali machine we can see the we get the db name cyberlab
-then we the name of db we will inject another sql to present the info in bd like "Cyber Defense"
+To extract the database name, I executed the following payload from the Kali Linux machine:
+ curl "http://10.10.10.20/artigo.php?id=-1%27%20UNION%20SELECT%201,database(),3%20--%20-"
+
+Because the application was vulnerable and failed to sanitize the id parameter, the server responded with the result of the database() function. The output revealed the active database name: **cyberlab**
 
 <img src="https://imgur.com/JNBDSf4.png" height="120%" width="50%"/>
 
