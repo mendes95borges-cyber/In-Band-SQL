@@ -109,6 +109,8 @@ Because the application was vulnerable and failed to sanitize the id parameter, 
 
 <img src="https://imgur.com/JNBDSf4.png" height="120%" width="50%"/>
 
+This validated that an attacker could not only bypass authentication but also read arbitrary data directly from the backend database.
+
 ---------
 
 Before creating and applying a Web Application Firewall (WAF) policy, the feature must first be enabled on the FortiGate device because it is disabled by default.
