@@ -100,7 +100,7 @@ This was done without any firewall rules or Web Application Firewall (WAF) in pl
 
  <img src="https://imgur.com/MLptBmY.png" height="120%" width="50%"/>
 
-This step was essential to simulate a real-world attack scenario and validate the severity of the vulnerability before moving into detection and mitigation phases.
+This step was essential to simulate the attack scenario and validate the severity of the vulnerability before moving into detection and mitigation phases.
 
 To extract the database name, I executed the following payload from the Kali Linux machine:
  curl "http://10.10.10.20/artigo.php?id=-1%27%20UNION%20SELECT%201,database(),3%20--%20-"
@@ -177,7 +177,6 @@ Observed behavior:
 - Log analysis skills (Apache + Firewall)
 - SIEM integration and alert validation
 - Defensive monitoring workflow
-- Attack-to-detection lifecycle visibility
 
 ---
 
@@ -199,7 +198,6 @@ Observed behavior:
 - Add XSS attack simulation
 - Integrate Suricata IDS
 - Create automated alert playbook
-- Expand log correlation rules
 
 ---
 
