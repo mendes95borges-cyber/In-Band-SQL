@@ -61,7 +61,7 @@ SQL Injection Detection & Monitoring Architecture
 ### Test 1
 To validate the SQL Injection vulnerability, the login page was tested locally using the following payload injected into the username field: **username** **admin'** OR **'1'='1' --**
 <p align="center"> 
-<img src="https://imgur.com/Jpqw147.png" height="120%" width="25%"/> <img src="https://imgur.com/53V1lVd.png" height="120%" width="25%"/>     
+<img src="https://imgur.com/IyM2y8x.png" height="120%" width="25%"/> <img src="https://imgur.com/pzftqNC.png" height="120%" width="25%"/>     
  
  This payload bypassed authentication logic and resulted in a successful login, as shown in the screenshots. The application loaded **login.php** page without properly validating or sanitizing user input.
 By default, the Apache access log does not record how the application processed the submitted credentials. To capture this information, I implemented a custom authentication logging mechanism. This allowed me to record each login attempt, including the injected payload and source IP address.
@@ -196,7 +196,7 @@ Observed behavior:
 
 - Add brute-force detection scenario
 - Add XSS attack simulation
-- Integrate Suricata IDS
+- Integrate Suricata IDS/IPS
 - Create automated alert playbook
 
 ---
