@@ -6,7 +6,7 @@ This project was designed to simulate a real-world SQL Injection vulnerability i
 
 <h2></h2>
 
-<b> Objective:</b>
+<b> Objectives:</b>
 
 - <b>Understand how SQL Injection works at a technical level</b> 
 - <b>Observe how vulnerable applications behave</b>
